@@ -1,0 +1,229 @@
+{% extends "layout.html" %}
+
+{% block title %}AI Architecture | HotelAI{% endblock %}
+
+{% block content %}
+
+<div class="architecture-page">
+
+    <div class="architecture-header">
+
+        <div>
+            <p class="eyebrow">HOTELAI • SYSTEM ARCHITECTURE</p>
+
+            <h1>AI Coordination Architecture</h1>
+
+            <p>
+                A multi-agent AI layer that understands guest intent,
+                generates operational tasks and coordinates multiple
+                hotel departments.
+            </p>
+        </div>
+
+        <a href="/staff" class="back-btn">
+            ← Operations Center
+        </a>
+
+    </div>
+
+
+    <!-- MAIN ARCHITECTURE -->
+
+    <div class="architecture-flow">
+
+        <!-- GUEST -->
+
+        <div class="architecture-node guest">
+
+            <div class="architecture-icon">👤</div>
+
+            <h3>Guest</h3>
+
+            <p>
+                Request / Event
+            </p>
+
+        </div>
+
+
+        <div class="architecture-arrow">→</div>
+
+
+        <!-- AI -->
+
+        <div class="architecture-node ai">
+
+            <div class="architecture-icon">🤖</div>
+
+            <h3>AI Intent Engine</h3>
+
+            <p>
+                Understands guest situation
+            </p>
+
+            <span>Intent • Priority • Context</span>
+
+        </div>
+
+
+        <div class="architecture-arrow">→</div>
+
+
+        <!-- COORDINATOR -->
+
+        <div class="architecture-node coordinator">
+
+            <div class="architecture-icon">🧠</div>
+
+            <h3>Coordination Engine</h3>
+
+            <p>
+                Generates & routes tasks
+            </p>
+
+            <span>Multi-department workflow</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- AGENTS -->
+
+    <div class="agents-section">
+
+        <div class="agents-title">
+
+            <p class="eyebrow">SPECIALIZED AI AGENTS</p>
+
+            <h2>Department Intelligence Layer</h2>
+
+            <p>
+                Each department receives only the task
+                relevant to its operation.
+            </p>
+
+        </div>
+
+
+        <div class="agents-grid">
+
+
+            <div class="agent-card">
+
+                <div class="agent-icon">🛎️</div>
+
+                <h3>Reception Agent</h3>
+
+                <p>
+                    Check-in, check-out and guest coordination
+                </p>
+
+                <span>Active</span>
+
+            </div>
+
+
+            <div class="agent-card">
+
+                <div class="agent-icon">🧹</div>
+
+                <h3>Housekeeping Agent</h3>
+
+                <p>
+                    Room cleaning and room readiness
+                </p>
+
+                <span>Active</span>
+
+            </div>
+
+
+            <div class="agent-card">
+
+                <div class="agent-icon">🚕</div>
+
+                <h3>Transport Agent</h3>
+
+                <p>
+                    Airport pickup and transportation
+                </p>
+
+                <span>Active</span>
+
+            </div>
+
+
+            <div class="agent-card">
+
+                <div class="agent-icon">🍽️</div>
+
+                <h3>Food Service Agent</h3>
+
+                <p>
+                    Food requests and delivery coordination
+                </p>
+
+                <span>Active</span>
+
+            </div>
+
+
+            <div class="agent-card">
+
+                <div class="agent-icon">🔧</div>
+
+                <h3>Maintenance Agent</h3>
+
+                <p>
+                    Technical issues and repairs
+                </p>
+
+                <span>Active</span>
+
+            </div>
+
+
+            <div class="agent-card">
+
+                <div class="agent-icon">🅿️</div>
+
+                <h3>Parking Agent</h3>
+
+                <p>
+                    Parking availability and vehicle coordination
+                </p>
+
+                <span>Active</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HUMAN OVERSIGHT -->
+
+    <div class="human-layer">
+
+        <div class="human-icon">👨‍💼</div>
+
+        <div>
+
+            <p class="eyebrow">HUMAN-IN-THE-LOOP</p>
+
+            <h2>AI coordinates. Humans execute.</h2>
+
+            <p>
+                Hotel staff retain control over operational decisions
+                while AI handles understanding, routing and tracking.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

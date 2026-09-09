@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block title %}HotelAI | Login{% endblock %}
+
+{% block content %}
+
+<div class="login-page">
+
+    <div class="login-hero">
+
+        <div class="hero-badge">
+            ✨ AI-POWERED HOSPITALITY
+        </div>
+
+        <h1>
+            Your hotel.<br>
+            <span>Intelligently connected.</span>
+        </h1>
+
+        <p>
+            A 24/7 AI service assistant that understands guests,
+            coordinates hotel departments and proactively delivers
+            personalized assistance.
+        </p>
+
+        <div class="hero-features">
+
+            <div>🤖 AI Assistant</div>
+            <div>🔗 Multi-Agent Coordination</div>
+            <div>⚡ Proactive Assistance</div>
+
+        </div>
+
+    </div>
+
+
+    <div class="login-card">
+
+        <div class="hotel-logo">
+            🏨
+        </div>
+
+        <h2>Welcome to HotelAI</h2>
+
+        <p>Select a demo experience</p>
+
+
+        <form action="/login" method="POST">
+
+            <input type="hidden"
+                   name="role"
+                   value="guest">
+
+            <button class="big-login guest-login">
+                <span>👤</span>
+
+                <div>
+                    <strong>Guest Experience</strong>
+                    <small>Chat with your AI hotel assistant</small>
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+        </form>
+
+
+        <form action="/login" method="POST">
+
+            <input type="hidden"
+                   name="role"
+                   value="staff">
+
+            <button class="big-login staff-login">
+
+                <span>👨‍💼</span>
+
+                <div>
+                    <strong>Hotel Operations</strong>
+                    <small>Manage AI-coordinated requests</small>
+                </div>
+
+                <b>→</b>
+
+            </button>
+
+        </form>
+
+        <div class="demo-note">
+            Demo Mode • SIH 2026 Prototype
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,577 @@
+{% extends "layout.html" %}
+
+{% block title %}HotelAI | Guest{% endblock %}
+
+{% block content %}
+
+<div class="app-layout">
+
+    <!-- =========================================
+         GUEST SIDEBAR
+         ========================================= -->
+
+    <aside class="sidebar">
+
+        <div class="side-title">
+            GUEST
+        </div>
+
+        <a class="active" href="/guest">
+            🏠 Dashboard
+        </a>
+
+        <a href="/services">
+            🛎 Hotel Services
+        </a>
+
+        <a href="/requests">
+            📋 My Requests
+        </a>
+
+        <a href="/profile">
+            👤 My Profile
+        </a>
+
+        <div class="side-bottom">
+
+            <div class="online">
+                <span></span>
+                AI Assistant Online
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+         ========================================= -->
+
+    <main class="main">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="page-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    GUEST EXPERIENCE
+                </p>
+
+                <h1>
+                    Good evening, {{ user["name"] }} 👋
+                </h1>
+
+                <p>
+                    How can HotelAI assist you today?
+                </p>
+
+            </div>
+
+
+            <div class="room-pill">
+
+                <small>ROOM</small>
+
+                <strong>
+                    {{ user["room"] }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             PROACTIVE AI
+             ========================================= -->
+
+        <div class="proactive-card">
+
+            <div class="proactive-icon">
+                ✨
+            </div>
+
+            <div class="proactive-text">
+
+                <span>
+                    PROACTIVE AI
+                </span>
+
+                <h3>
+                    {{ proactive["title"] }}
+                </h3>
+
+                <p>
+                    {{ proactive["message"] }}
+                </p>
+
+            </div>
+
+            <button
+                onclick="sendQuickRequest('Please arrange airport transportation for my checkout tomorrow')"
+                class="outline-btn">
+
+                Arrange
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================================
+             AI CHAT
+             ========================================= -->
+
+        <section class="chat-panel">
+
+            <div class="chat-top">
+
+                <div class="ai-profile">
+
+                    <div class="ai-circle">
+                        ✨
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            HotelAI Assistant
+                        </strong>
+
+                        <small>
+                            ● Online • Ready to help
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <span class="secure">
+                    🔒 Secure
+                </span>
+
+            </div>
+
+
+            <div id="chatMessages" class="chat-messages">
+
+                <div class="message ai-message">
+
+                    <div class="message-avatar">
+                        🤖
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            HotelAI
+                        </strong>
+
+                        <p>
+                            Hello! I'm your intelligent hotel
+                            assistant. You can ask me for
+                            housekeeping, transportation, food,
+                            maintenance, reception or anything
+                            else during your stay.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="quick-actions">
+
+                <button
+                    onclick="sendQuickRequest('I need two extra towels')">
+
+                    🧹 Extra towels
+
+                </button>
+
+
+                <button
+                    onclick="sendQuickRequest('I need an airport taxi')">
+
+                    🚕 Airport taxi
+
+                </button>
+
+
+                <button
+                    onclick="sendQuickRequest('What time is breakfast?')">
+
+                    🍽 Breakfast
+
+                </button>
+
+
+                <button
+                    onclick="sendQuickRequest('My AC is not working')">
+
+                    🔧 AC problem
+
+                </button>
+
+            </div>
+
+
+            <!-- CHAT INPUT -->
+
+            <div class="chat-input-area">
+
+                <input
+                    id="messageInput"
+                    type="text"
+                    placeholder="Tell HotelAI what you need..."
+                    onkeydown="handleEnter(event)"
+                >
+
+                <button
+                    onclick="sendMessage()"
+                    class="send-btn">
+
+                    Send
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             HOTEL SERVICES
+             ========================================= -->
+
+        <h2 class="section-heading">
+            Hotel Services
+        </h2>
+
+
+        <div class="service-grid">
+
+
+            <div
+                class="service-box"
+                onclick="sendQuickRequest('I need housekeeping')">
+
+                <div>
+                    🧹
+                </div>
+
+                <strong>
+                    Housekeeping
+                </strong>
+
+                <p>
+                    Cleaning, towels & supplies
+                </p>
+
+            </div>
+
+
+            <div
+                class="service-box"
+                onclick="sendQuickRequest('I need transportation')">
+
+                <div>
+                    🚕
+                </div>
+
+                <strong>
+                    Transport
+                </strong>
+
+                <p>
+                    Taxi & airport pickup
+                </p>
+
+            </div>
+
+
+            <div
+                class="service-box"
+                onclick="sendQuickRequest('I want food service information')">
+
+                <div>
+                    🍽️
+                </div>
+
+                <strong>
+                    Food Service
+                </strong>
+
+                <p>
+                    Dining & breakfast
+                </p>
+
+            </div>
+
+
+            <div
+                class="service-box"
+                onclick="sendQuickRequest('My room AC has a problem')">
+
+                <div>
+                    🔧
+                </div>
+
+                <strong>
+                    Maintenance
+                </strong>
+
+                <p>
+                    AC, plumbing & electricity
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             REQUEST TRACKING
+             ========================================= -->
+
+        <section class="guest-requests">
+
+            <div class="guest-section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        SERVICE ACTIVITY
+                    </span>
+
+                    <h2>
+                        My Requests
+                    </h2>
+
+                    <p>
+                        Track your hotel requests and
+                        AI-coordinated services.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/requests"
+                    class="view-all-btn">
+
+                    View All →
+
+                </a>
+
+            </div>
+
+
+            {% if notifications %}
+
+                <div class="guest-request-list">
+
+                    {% for notification in notifications %}
+
+                    <div class="guest-request-card">
+
+                        <div class="guest-request-icon">
+                            🤖
+                        </div>
+
+
+                        <div class="guest-request-info">
+
+                            <div class="guest-request-top">
+
+                                <span class="request-label">
+                                    AI SERVICE UPDATE
+                                </span>
+
+                                <span class="guest-request-time">
+                                    Just now
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                {{ notification["message"] }}
+                            </h3>
+
+
+                            <p>
+                                HotelAI Coordination Engine
+                            </p>
+
+                        </div>
+
+
+                        <div class="guest-request-status">
+
+                            <span class="status-dot"></span>
+
+                            Active
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+            {% else %}
+
+                <div class="guest-empty">
+
+                    <div>
+                        🤖
+                    </div>
+
+                    <h3>
+                        No active requests
+                    </h3>
+
+                    <p>
+                        Your hotel service requests will
+                        appear here.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+
+        <!-- =========================================
+             SIH LIVE DEMO
+             ========================================= -->
+
+        <div class="demo-scenario">
+
+            <div class="demo-scenario-icon">
+                ✈️
+            </div>
+
+
+            <div class="demo-scenario-content">
+
+                <span class="eyebrow">
+                    SMART COORDINATION DEMO
+                </span>
+
+                <h2>
+                    Flight Delay Assistance
+                </h2>
+
+                <p>
+                    Flight delayed? HotelAI automatically
+                    coordinates Reception, Transport and
+                    Housekeeping for you.
+                </p>
+
+
+                <a
+                    href="/flight-delay"
+                    class="demo-scenario-btn">
+
+                    Run Live Scenario →
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     GUEST SERVICE REQUEST JAVASCRIPT
+     ========================================= -->
+
+<script>
+
+async function sendServiceRequest(service) {
+
+    const message = prompt(
+        "Tell HotelAI what you need:"
+    );
+
+    if (message === null) {
+        return;
+    }
+
+
+    const response = await fetch(
+        "/api/service-request",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                service: service,
+                message: message
+            })
+        }
+    );
+
+
+    const data = await response.json();
+
+
+    if (data.success) {
+
+        alert(
+            "✅ Request Created!\n\n" +
+
+            "Service: " +
+            data.service +
+
+            "\nAI Agent: " +
+            data.department +
+
+            "\nPriority: " +
+            data.priority +
+
+            "\nStatus: " +
+            data.status
+        );
+
+
+        location.reload();
+
+    }
+
+    else {
+
+        alert(
+            "❌ " + data.message
+        );
+
+    }
+
+}
+
+</script>
+
+
+{% endblock %}

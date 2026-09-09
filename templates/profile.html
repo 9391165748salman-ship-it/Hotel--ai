@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}HotelAI | Profile{% endblock %}
+
+{% block content %}
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="side-title">GUEST</div>
+
+        <a href="/guest">🏠 Dashboard</a>
+        <a href="/services">🛎 Hotel Services</a>
+        <a href="/requests">📋 My Requests</a>
+        <a class="active" href="/profile">👤 My Profile</a>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="page-header">
+
+            <div>
+
+                <p class="eyebrow">GUEST PROFILE</p>
+
+                <h1>
+                    {{ user["name"] }}
+                </h1>
+
+                <p>
+                    Your HotelAI guest profile.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-card">
+
+            <div class="profile-avatar">
+                {{ user["name"][0] }}
+            </div>
+
+            <h2>{{ user["name"] }}</h2>
+
+            <p>{{ user["email"] }}</p>
+
+            <div class="profile-details">
+
+                <div>
+                    <small>ROOM</small>
+                    <strong>{{ user["room"] }}</strong>
+                </div>
+
+                <div>
+                    <small>STATUS</small>
+                    <strong>Checked In</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}

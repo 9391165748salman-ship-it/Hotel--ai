@@ -1,0 +1,183 @@
+{% extends "layout.html" %}
+
+{% block title %}HotelAI | My Requests{% endblock %}
+
+{% block content %}
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="side-title">GUEST</div>
+
+        <a href="/guest">🏠 Dashboard</a>
+
+        <a href="/services">🛎 Hotel Services</a>
+
+        <a class="active" href="/requests">📋 My Requests</a>
+
+        <a href="/profile">👤 My Profile</a>
+
+        <div class="side-bottom">
+            <div class="online">
+                <span></span>
+                AI Assistant Online
+            </div>
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="page-header">
+
+            <div>
+                <p class="eyebrow">SERVICE ACTIVITY</p>
+
+                <h1>My Requests</h1>
+
+                <p>
+                    Track all your hotel service requests.
+                </p>
+            </div>
+
+        </div>
+
+
+        {% if requests %}
+
+            <div class="request-history">
+
+                {% for item in requests %}
+
+                <div class="history-card">
+
+                    <div class="history-top">
+
+                        <span class="request-id">
+                            REQUEST #{{ item["id"] }}
+                        </span>
+
+                        <span class="priority
+                            {% if item["priority"] == "High" or item["priority"] == "Critical" %}
+                                high
+                            {% else %}
+                                normal
+                            {% endif %}
+                        ">
+                            {{ item["priority"] }}
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        {{ item["message"] }}
+                    </h2>
+
+
+                    <p class="request-department">
+                        🤖 AI routed to
+                        <strong>{{ item["department"] }}</strong>
+                        • Room {{ item["room"] }}
+                    </p>
+
+
+                    <div class="status-timeline">
+
+                        <div class="timeline-step
+                            {% if item["status"] in ["Pending", "In Progress", "Completed"] %}
+                                active
+                            {% endif %}
+                        ">
+
+                            <span>1</span>
+
+                            <small>
+                                Request Created
+                            </small>
+
+                        </div>
+
+
+                        <div class="timeline-line"></div>
+
+
+                        <div class="timeline-step
+                            {% if item["status"] in ["In Progress", "Completed"] %}
+                                active
+                            {% endif %}
+                        ">
+
+                            <span>2</span>
+
+                            <small>
+                                In Progress
+                            </small>
+
+                        </div>
+
+
+                        <div class="timeline-line"></div>
+
+
+                        <div class="timeline-step
+                            {% if item["status"] == "Completed" %}
+                                active
+                            {% endif %}
+                        ">
+
+                            <span>3</span>
+
+                            <small>
+                                Completed
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="current-status">
+
+                        Current Status:
+
+                        <strong>
+                            {{ item["status"] }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+        {% else %}
+
+            <div class="guest-empty">
+
+                <div>📋</div>
+
+                <h3>No requests yet</h3>
+
+                <p>
+                    Your hotel service requests will appear here.
+                </p>
+
+                <a href="/guest" class="view-all-btn">
+                    Request a Service →
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </main>
+
+</div>
+
+{% endblock %}

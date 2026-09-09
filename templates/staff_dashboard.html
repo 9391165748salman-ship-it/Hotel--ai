@@ -1,0 +1,540 @@
+{% extends "layout.html" %}
+
+{% block title %}HotelAI | Operations{% endblock %}
+
+{% block content %}
+
+<div class="app-layout">
+
+```
+<aside class="sidebar">
+
+    <div class="side-title">
+        HOTELAI
+    </div>
+
+    <a class="active" href="/staff">
+        📊 Dashboard
+    </a>
+
+    <a href="/architecture">
+        🧠 AI Architecture
+    </a>
+
+    <a href="/flight-delay">
+        ✈️ Flight Delay Demo
+    </a>
+
+    <a href="/requests">
+        📋 Requests
+    </a>
+
+    <a href="/services">
+        🛎️ Hotel Services
+    </a>
+
+    <a href="/profile">
+        👤 Profile
+    </a>
+
+    <a href="/logout">
+        🚪 Logout
+    </a>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+    <!-- HEADER -->
+     <div style="margin-bottom: 25px;">
+
+    <a href="/flight-delay"
+       style="
+       display:inline-block;
+       padding:12px 18px;
+       background:#0f172a;
+       color:white;
+       text-decoration:none;
+       border-radius:10px;
+       font-weight:600;
+       ">
+
+        ✈️ Run Flight Delay Demo
+
+    </a>
+
+</div>
+    <div class="page-header">
+
+        <div>
+
+            <p class="eyebrow">
+                HOTEL OPERATIONS
+            </p>
+
+            <h1>
+                Coordination Center
+            </h1>
+
+            <p>
+                AI-powered operational overview
+            </p>
+
+        </div>
+
+        <div class="live-status">
+            <span></span>
+            LIVE
+        </div>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+    <div class="stats">
+
+        <div class="stat">
+
+            <span>ALL REQUESTS</span>
+
+            <strong>
+                {{ stats["total"] }}
+            </strong>
+
+            <small>
+                Total requests
+            </small>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span>PENDING</span>
+
+            <strong>
+                {{ stats["pending"] }}
+            </strong>
+
+            <small>
+                Need attention
+            </small>
+
+        </div>
+
+
+        <div class="stat">
+
+            <span>IN PROGRESS</span>
+
+            <strong>
+                {{ stats["progress"] }}
+            </strong>
+
+            <small>
+                Being handled
+            </small>
+
+        </div>
+
+
+        <div class="stat danger">
+
+            <span>HIGH PRIORITY</span>
+
+            <strong>
+                {{ stats["urgent"] }}
+            </strong>
+
+            <small>
+                Requires attention
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- COORDINATION ENGINE -->
+    <section class="coordination-card">
+
+        <div>
+
+            <span class="eyebrow">
+                AI COORDINATION ENGINE
+            </span>
+
+            <h2>
+                One conversation.<br>
+                Multiple operations.
+            </h2>
+
+            <p>
+                HotelAI converts guest conversations into
+                actionable tasks for the right departments.
+            </p>
+
+        </div>
+
+
+        <div class="flow">
+
+            <div>
+                👤
+                <small>Guest</small>
+            </div>
+
+            <b>→</b>
+
+            <div>
+                🤖
+                <small>AI</small>
+            </div>
+
+            <b>→</b>
+
+            <div>
+                🧠
+                <small>Coordinator</small>
+            </div>
+
+            <b>→</b>
+
+            <div>
+                🏨
+                <small>Departments</small>
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- AI OPERATIONS OVERVIEW -->
+
+<section class="ai-overview">
+
+    <div class="overview-header">
+
+        <div>
+            <p class="eyebrow">AI OPERATIONS</p>
+
+            <h2>Intelligent Service Network</h2>
+
+            <p>
+                Real-time status of HotelAI's specialized
+                department agents.
+            </p>
+        </div>
+
+        <div class="system-online">
+            <span></span>
+            ALL SYSTEMS OPERATIONAL
+        </div>
+
+    </div>
+
+
+    <!-- AGENT STATUS -->
+
+    <div class="agent-status-grid">
+
+        <div class="agent-status-card">
+
+            <div class="agent-status-icon">🛎️</div>
+
+            <div>
+                <strong>Reception Agent</strong>
+                <small>Guest coordination</small>
+            </div>
+
+            <span class="agent-online">● Online</span>
+
+        </div>
+
+
+        <div class="agent-status-card">
+
+            <div class="agent-status-icon">🧹</div>
+
+            <div>
+                <strong>Housekeeping Agent</strong>
+                <small>Room operations</small>
+            </div>
+
+            <span class="agent-online">● Online</span>
+
+        </div>
+
+
+        <div class="agent-status-card">
+
+            <div class="agent-status-icon">🚕</div>
+
+            <div>
+                <strong>Transport Agent</strong>
+                <small>Travel coordination</small>
+            </div>
+
+            <span class="agent-online">● Online</span>
+
+        </div>
+
+
+        <div class="agent-status-card">
+
+            <div class="agent-status-icon">🔧</div>
+
+            <div>
+                <strong>Maintenance Agent</strong>
+                <small>Technical support</small>
+            </div>
+
+            <span class="agent-online">● Online</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- METRICS -->
+
+    <div class="coordination-metrics">
+
+        <div class="metric-card">
+
+            <span>AI ROUTED REQUESTS</span>
+
+            <strong>{{ stats.total }}</strong>
+
+            <small>
+                Requests processed
+            </small>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <span>ACTIVE COORDINATIONS</span>
+
+            <strong>{{ stats.progress }}</strong>
+
+            <small>
+                Multi-agent workflows
+            </small>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <span>HIGH PRIORITY</span>
+
+            <strong>{{ stats.urgent }}</strong>
+
+            <small>
+                Requiring attention
+            </small>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <span>RESPONSE STATUS</span>
+
+            <strong>98%</strong>
+
+            <small>
+                AI routing efficiency
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- LIVE REQUESTS -->
+    <h2 class="section-heading">
+        Live Requests
+    </h2>
+
+
+    {% if requests %}
+
+        {% for item in requests %}
+
+        <div class="request-row">
+
+            <div class="request-info">
+
+                <div>
+
+                    <span class="request-id">
+                        #{{ item["id"] }}
+                    </span>
+
+
+                    {% if item["priority"] == "High" or item["priority"] == "Critical" %}
+
+                        <span class="priority high">
+                            {{ item["priority"] }}
+                        </span>
+
+                    {% else %}
+
+                        <span class="priority normal">
+                            {{ item["priority"] }}
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <h3>
+                    {{ item["message"] }}
+                </h3>
+
+
+                <p>
+                    Room {{ item["room"] }}
+                    •
+                    {{ item["department"] }}
+                </p>
+
+            </div>
+
+
+            <div class="request-actions">
+
+                <span class="status">
+                    {{ item["status"] }}
+                </span>
+
+
+                {% if item["status"] != "Completed" %}
+
+                <button
+                    type="button"
+data-id="{{ item['id'] }}"
+onclick="updateRequest(this.dataset.id, 'Completed')"
+                    class="complete-btn">
+
+                    Complete
+
+                </button>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="empty">
+
+            <h3>
+                No requests yet
+            </h3>
+
+            <p>
+                Guest requests will appear here automatically.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- AGENT TASKS -->
+    <h2 class="section-heading">
+        Agent Tasks
+    </h2>
+
+
+    {% if tasks %}
+
+        {% for task in tasks %}
+
+        <div class="task-row">
+
+            <div class="agent-icon">
+
+                {% if task["department"] == "Housekeeping" %}
+
+                    🧹
+
+                {% elif task["department"] == "Transport" %}
+
+                    🚕
+
+
+                {% elif task["department"] == "Maintenance" %}
+
+                    🔧
+
+
+                {% elif task["department"] == "Food Service" %}
+
+                    🍽️
+
+
+                {% else %}
+
+                    🛎️
+
+                {% endif %}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    {{ task["department"] }} Agent
+                </strong>
+
+                <p>
+                    {{ task["description"] }}
+                </p>
+
+            </div>
+
+
+            <span class="status">
+                {{ task["status"] }}
+            </span>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="empty">
+
+            <h3>
+                No agent tasks yet
+            </h3>
+
+            <p>
+                Tasks will be created automatically when guests
+                submit requests.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</main>
+```
+
+</div>
+
+{% endblock %}

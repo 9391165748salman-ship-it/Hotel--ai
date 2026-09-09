@@ -1,0 +1,458 @@
+{% extends "layout.html" %}
+
+{% block title %}Flight Delay Coordination | HotelAI{% endblock %}
+
+{% block content %}
+
+<div class="flight-page">
+
+```
+<div class="flight-header">
+
+    <div>
+        <p class="eyebrow">AI SITUATION MONITOR</p>
+
+        <h1>Flight Delay Coordination</h1>
+
+        <p class="subtitle">
+            Demonstrating how one guest situation automatically
+            coordinates multiple hotel departments.
+        </p>
+    </div>
+
+    <a href="/staff" class="back-btn">
+        ← Operations Center
+    </a>
+
+</div>
+
+
+<!-- FLIGHT EVENT CARD -->
+
+<div class="flight-event">
+
+    <div class="flight-icon">
+        ✈️
+    </div>
+
+    <div class="flight-info">
+
+        <span class="event-label">
+            ACTIVE GUEST EVENT
+        </span>
+
+        <h2>
+            Flight Delay Detected
+        </h2>
+
+        <p>
+            Flight <strong>AI-542</strong> has been delayed.
+            The guest's expected arrival requires coordination.
+        </p>
+
+    </div>
+
+    <div class="delay-badge">
+        ⚠ DELAYED<br>
+        <strong>3 HOURS</strong>
+    </div>
+
+</div>
+
+
+<!-- START BUTTON -->
+
+<div class="demo-action" id="demoAction">
+
+    <h2>Ready to Analyze Situation</h2>
+
+    <p>
+        Click below to allow the AI Coordination Engine
+        to analyze the event and coordinate hotel operations.
+    </p>
+
+    <button class="coordinate-btn" onclick="startCoordination()">
+        🧠 Start AI Coordination
+    </button>
+
+</div>
+
+
+<!-- AI ANALYSIS -->
+
+<section class="analysis-section hidden" id="analysisSection">
+
+    <div class="engine-card">
+
+        <div class="engine-icon">
+            🧠
+        </div>
+
+        <div>
+
+            <span class="eyebrow">
+                AI SITUATION ANALYSIS
+            </span>
+
+            <h2>
+                Situation Understood
+            </h2>
+
+            <p>
+                AI detected a potential late arrival
+                and identified the departments affected.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="analysis-results">
+
+        <div class="analysis-item">
+
+            <span>INTENT</span>
+
+            <strong>
+                Flight Delay / Late Arrival
+            </strong>
+
+        </div>
+
+
+        <div class="analysis-item">
+
+            <span>PRIORITY</span>
+
+            <strong class="high-text">
+                HIGH
+            </strong>
+
+        </div>
+
+
+        <div class="analysis-item">
+
+            <span>AFFECTED DEPARTMENTS</span>
+
+            <strong>
+                3 Departments
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COORDINATION ENGINE -->
+
+<section class="coordination-demo hidden" id="coordinationSection">
+
+    <div class="coordination-title">
+
+        <span class="eyebrow">
+            CORE INNOVATION
+        </span>
+
+        <h2>
+            AI Coordination Engine Activated
+        </h2>
+
+        <p>
+            One guest event is converted into multiple
+            coordinated operational tasks.
+        </p>
+
+    </div>
+
+
+    <div class="coordination-flow">
+
+        <!-- EVENT -->
+
+        <div class="flow-node guest-node">
+
+            <div class="node-icon">
+                ✈️
+            </div>
+
+            <strong>
+                Flight Delay
+            </strong>
+
+            <small>
+                Guest Event
+            </small>
+
+        </div>
+
+
+        <div class="flow-arrow">
+            ↓
+        </div>
+
+
+        <!-- AI -->
+
+        <div class="flow-node ai-node">
+
+            <div class="node-icon">
+                🧠
+            </div>
+
+            <strong>
+                AI Engine
+            </strong>
+
+            <small>
+                Situation Analysis
+            </small>
+
+        </div>
+
+
+        <div class="flow-arrow">
+            ↓
+        </div>
+
+
+        <!-- COORDINATOR -->
+
+        <div class="flow-node coordinator-node">
+
+            <div class="node-icon">
+                🔗
+            </div>
+
+            <strong>
+                Coordination Engine
+            </strong>
+
+            <small>
+                Workflow Generation
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- DEPARTMENT TASKS -->
+
+    <div class="department-grid">
+
+        <div class="department-task" id="receptionTask">
+
+            <div class="department-icon">
+                🛎️
+            </div>
+
+            <h3>
+                Reception Agent
+            </h3>
+
+            <p>
+                Update expected arrival time
+            </p>
+
+            <span class="task-status">
+                Waiting
+            </span>
+
+        </div>
+
+
+        <div class="department-task" id="transportTask">
+
+            <div class="department-icon">
+                🚕
+            </div>
+
+            <h3>
+                Transport Agent
+            </h3>
+
+            <p>
+                Reschedule airport pickup
+            </p>
+
+            <span class="task-status">
+                Waiting
+            </span>
+
+        </div>
+
+
+        <div class="department-task" id="housekeepingTask">
+
+            <div class="department-icon">
+                🧹
+            </div>
+
+            <h3>
+                Housekeeping Agent
+            </h3>
+
+            <p>
+                Maintain room readiness
+            </p>
+
+            <span class="task-status">
+                Waiting
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL CONFIRMATION -->
+
+<section class="confirmation-card hidden" id="confirmationSection">
+
+    <div class="confirmation-icon">
+        ✓
+    </div>
+
+    <div>
+
+        <span class="eyebrow">
+            UNIFIED GUEST CONFIRMATION
+        </span>
+
+        <h2>
+            Coordination Complete
+        </h2>
+
+        <p>
+            Your late arrival has been noted.
+            Airport transportation has been updated and
+            the hotel team has been notified.
+        </p>
+
+    </div>
+
+</section>
+```
+
+</div>
+
+<script>
+
+async function startCoordination() {
+
+    const button = document.querySelector(".coordinate-btn");
+
+    button.innerHTML = "🧠 AI Analyzing Situation...";
+    button.disabled = true;
+
+
+    try {
+
+        const response = await fetch("/api/flight-delay", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                flight: "AI-542",
+                delay: "3 Hours"
+            })
+
+        });
+
+
+        const data = await response.json();
+
+
+        if (data.success) {
+
+            document
+                .getElementById("demoAction")
+                .classList.add("hidden");
+
+
+            document
+                .getElementById("analysisSection")
+                .classList.remove("hidden");
+
+
+            setTimeout(() => {
+
+                document
+                    .getElementById("coordinationSection")
+                    .classList.remove("hidden");
+
+            }, 1200);
+
+
+            setTimeout(() => {
+
+                activateTask("receptionTask");
+
+            }, 2200);
+
+
+            setTimeout(() => {
+
+                activateTask("transportTask");
+
+            }, 3200);
+
+
+            setTimeout(() => {
+
+                activateTask("housekeepingTask");
+
+            }, 4200);
+
+
+            setTimeout(() => {
+
+                document
+                    .getElementById("confirmationSection")
+                    .classList.remove("hidden");
+
+            }, 5200);
+
+        }
+
+    }
+
+    catch (error) {
+
+        alert(
+            "Something went wrong. Please check the Flask server."
+        );
+
+        button.innerHTML = "🧠 Start AI Coordination";
+        button.disabled = false;
+
+    }
+
+}
+
+
+function activateTask(id) {
+
+    const task = document.getElementById(id);
+
+    task.classList.add("active-task");
+
+    const status = task.querySelector(".task-status");
+
+    status.innerHTML = "✓ Task Created";
+
+}
+
+</script>
+
+{% endblock %}

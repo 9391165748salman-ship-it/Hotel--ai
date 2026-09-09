@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}HotelAI{% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="brand-icon">🏨</div>
+
+        <div>
+            <strong>HotelAI</strong>
+            <small>Smart Hospitality Platform</small>
+        </div>
+    </div>
+
+    <div class="top-actions">
+
+        {% if session.get("user_id") %}
+
+        <a href="/logout" class="logout">
+            Logout
+        </a>
+
+        {% endif %}
+
+    </div>
+
+</header>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<script src="{{ url_for('static', filename='js/guest.js') }}"></script>
+<script src="{{ url_for('static', filename='js/staff.js') }}"></script>
+
+</body>
+
+</html>

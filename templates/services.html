@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}HotelAI | Services{% endblock %}
+
+{% block content %}
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+
+        <div class="side-title">GUEST</div>
+
+        <a href="/guest">🏠 Dashboard</a>
+        <a class="active" href="/services">🛎 Hotel Services</a>
+        <a href="/requests">📋 My Requests</a>
+        <a href="/profile">👤 My Profile</a>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="page-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    HOTEL SERVICES
+                </p>
+
+                <h1>
+                    Everything at your fingertips.
+                </h1>
+
+                <p>
+                    HotelAI connects you with every department.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="big-services">
+
+            <div class="big-service">
+                🧹
+                <h2>Housekeeping</h2>
+                <p>Cleaning, towels, toiletries and room supplies.</p>
+            </div>
+
+            <div class="big-service">
+                🚕
+                <h2>Transportation</h2>
+                <p>Airport pickup, taxi and local transportation.</p>
+            </div>
+
+            <div class="big-service">
+                🍽️
+                <h2>Food Service</h2>
+                <p>Breakfast timings, restaurant and room dining.</p>
+            </div>
+
+            <div class="big-service">
+                🔧
+                <h2>Maintenance</h2>
+                <p>AC, electricity, plumbing and room issues.</p>
+            </div>
+
+            <div class="big-service">
+                🅿️
+                <h2>Parking</h2>
+                <p>Parking availability and assistance.</p>
+            </div>
+
+            <div class="big-service">
+                🛎️
+                <h2>Reception</h2>
+                <p>Check-in, checkout and general assistance.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}
